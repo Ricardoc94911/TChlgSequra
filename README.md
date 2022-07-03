@@ -133,3 +133,14 @@ id | week_start_date (integer) | week_end_date (integer) | merchant_id (integer 
 I created two new tables that weren't specified in the initial specification: disbursement_rules and weekly_disbursements.
 The table 'disbursement_rules' serves the role to store all the disbursement fees and their value ranges.
 The table 'weekly_disbursement' serves the role for storing and persisting all the previously calculated disbursements for a given week and a given merchant.
+
+From what i gathered from the challenge specification there should be a way to persist the calculations. And an API endpoint to expose the disbursements for a given week and a given merchant (being that the merchant is not a required parameter).
+Therefore i decided to create two endpoints:
+
+```
+post 'orders/process_disbursements'
+get 'orders/get_week_disbursements'
+```
+
+As their name suggest the POST serves the role of triggering a disbursement calculation and the GET serves the role of exposing disbursements.
+The POST however does not work as a normal REST api, per say. The POST calls an Active Job to run the calculations independently of the API response.
