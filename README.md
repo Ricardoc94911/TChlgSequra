@@ -154,7 +154,7 @@ Given that, the tests were made throught verification of the calculations throug
 
 Queries such as this one
 ```
-select SUM(q.disbursement) from (
+SELECT SUM(q.disbursement) from (
 SELECT case
            when orders.amount <= 50 then orders.amount * 1 / 100.0
            WHEN orders.amount > 50 AND orders.amount <= 300 then orders.amount * 0.95 / 100.0
