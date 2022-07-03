@@ -1,10 +1,10 @@
 # TChlgSequra
 
 
-##Introduction
+## Introduction
 In this tech challenge it was ask for me to implement a system that would calculate a weekly disbursement pass on to merchants according to a specified week orders. The company provided me with 3 JSON files: merchants.json, shoppers.json and orders.json. Each of these files contained a list of records regarding each of the components of the system to be implemented (merchants, shoppers and orders) in the following format.
 
-###MERCHANTS
+### MERCHANTS
 ```
 ID | NAME                      | EMAIL                             | CIF
 1  | Treutel, Schumm and Fadel | info@treutel-schumm-and-fadel.com | B611111111
@@ -35,7 +35,7 @@ ID | MERCHANT ID | SHOPPER ID | AMOUNT | CREATED AT           | COMPLETED AT
 ```
 
 
-##Setup
+## Setup
 In order to setup this project one only needs to checkout the repository and install the necessary gems.
 There may be a need to install postgresql client manually in order for the pg gem to work and be installed correctly.
 After everything is setup, just run the project like you would run a normal Ruby on Rails Project
@@ -44,7 +44,7 @@ After everything is setup, just run the project like you would run a normal Ruby
 rails s
 ```
 
-##Decisions and Approach
+## Decisions and Approach
 
 Since the company provided me with json files containing records from a possible database, i decided to dump those files into a database.
 I never had experience working with AWS but so i decided to setup an account and create a RDS Postgresql database.
@@ -52,7 +52,7 @@ After setting up a database on AWS i just connected the project to that database
 After that i started seeding the files on to those tables. This process took a bit of time since the orders.json file was of a decent size.
 
 
-####seeds.rb
+#### seeds.rb
 ```
 if Shopper.count == 0
     _path = File.join(File.dirname(__FILE__), "../seed_files/shoppers.json")
