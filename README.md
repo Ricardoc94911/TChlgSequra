@@ -40,9 +40,9 @@ In order to setup this project one only needs to checkout the repository and ins
 There may be a need to install postgresql client manually in order for the pg gem to work and be installed correctly.
 After everything is setup, just run the project like you would run a normal Ruby on Rails Project
 
-
+```
 rails s
-´´´
+```
 
 ##Decisions and Approach
 
@@ -51,7 +51,9 @@ I never had experience working with AWS but so i decided to setup an account and
 After setting up a database on AWS i just connected the project to that database and created the necessary tables.
 After that i started seeding the files on to those tables. This process took a bit of time since the orders.json file was of a decent size.
 
-´´´
+
+####seeds.rb
+```
 if Shopper.count == 0
     _path = File.join(File.dirname(__FILE__), "../seed_files/shoppers.json")
     _records = JSON.parse(File.read(_path))
@@ -90,4 +92,4 @@ if Order.count == 0
     end
     puts "Orders are seeded"
 end
-´´´
+
