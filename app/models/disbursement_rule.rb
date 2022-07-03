@@ -1,0 +1,5 @@
+class DisbursementRule < ApplicationRecord
+    
+
+    
+end
