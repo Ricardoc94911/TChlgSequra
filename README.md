@@ -123,7 +123,13 @@ id | start_value (integer) | end_value (integer) | fee_percentage (decimal) | fl
 
 
 
-#### weekly_disbursement
+#### weekly_disbursements
 ```
 id | week_start_date (integer) | week_end_date (integer) | merchant_id (integer -> FK) | disbursement_value (decimal) | created_at (timestamp) | updated_at (timestamp)
 ```
+
+
+
+I created two new tables that weren't specified in the initial specification: disbursement_rules and weekly_disbursements.
+The table 'disbursement_rules' serves the role to store all the disbursement fees and their value ranges.
+The table 'weekly_disbursement' serves the role for storing and persisting all the previously calculated disbursements for a given week and a given merchant.
