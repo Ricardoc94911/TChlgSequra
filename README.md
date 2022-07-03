@@ -98,18 +98,32 @@ end
 The necessary tables were created through migrations in order to preserve the structure in case of a change of server or something like that.
 The created tables are as follows:
 
-### merchants
+#### merchants
 ```
-id | name                      | email                             | cif
+id | name (varchar) | email (varchar) | cif (varchar)
 ```
 
 
-### shoppers
+#### shoppers
 ```
 id | name (varchar) | email (varchar) | nif (varchar)
 ```
 
 
-###orders
+#### orders
 ```
 id | merchant_id (integer -> FK) | shopper_id (integer -> FK) | amount (decimal) | created_at (timestamp) | completed_at (timestamp)
+```
+
+
+#### disbursement_rules
+```
+id | start_value (integer) | end_value (integer) | fee_percentage (decimal) | flg_active (boolean) | created_at (timestamp) | updated_at (timestamp)
+```
+
+
+
+#### weekly_disbursement
+```
+id | week_start_date (integer) | week_end_date (integer) | merchant_id (integer -> FK) | disbursement_value (decimal) | created_at (timestamp) | updated_at (timestamp)
+```
