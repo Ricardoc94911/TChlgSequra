@@ -145,3 +145,21 @@ get 'orders/get_week_disbursements'
 #### orders_controller.rb
 As their name suggest the POST serves the role of triggering a disbursement calculation and the GET serves the role of exposing disbursements.
 The POST however does not work as a normal REST api, per say. The POST calls an Active Job to run the calculations independently of the API response (process_disbursements_job.rb)
+
+
+I didn't get to implement any automated tests. But if i did i would probably use a gem called rspec. 
+It's a gem i've used before (not extensively).
+
+Given that, the tests were made throught verification of the calculations through a sql query on the database and comparison of those values with the results present on the table weekly_disbursements.
+
+Queries such as this one
+```
+select SUM(q.disbursement) from (
+SELECT case
+           when orders.amount <= 50 then orders.amount * 1 / 100.0
+           WHEN orders.amount > 50 AND orders.amount <= 300 then orders.amount * 0.95 / 100.0
+ELSE orders.amount * 0.85 / 100.0 end as disbursement
+FROM "orders"
+WHERE "orders"."merchant_id" = 1
+  AND (completed_at >= '2018-01-01 00:00:00' AND completed_at <= '2018-01-07 23:59:59.999999')) q
+```
