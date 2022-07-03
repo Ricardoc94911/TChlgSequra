@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
-  get 'orders/process_disbursements'
+  post 'orders/process_disbursements'
   get 'orders/get_week_disbursements'
   
 end
