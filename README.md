@@ -142,5 +142,6 @@ post 'orders/process_disbursements'
 get 'orders/get_week_disbursements'
 ```
 
+#### orders_controller.rb
 As their name suggest the POST serves the role of triggering a disbursement calculation and the GET serves the role of exposing disbursements.
-The POST however does not work as a normal REST api, per say. The POST calls an Active Job to run the calculations independently of the API response.
+The POST however does not work as a normal REST api, per say. The POST calls an Active Job to run the calculations independently of the API response (process_disbursements_job.rb)
