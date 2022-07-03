@@ -92,4 +92,24 @@ if Order.count == 0
     end
     puts "Orders are seeded"
 end
+```
 
+
+The necessary tables were created through migrations in order to preserve the structure in case of a change of server or something like that.
+The created tables are as follows:
+
+### merchants
+```
+id | name                      | email                             | cif
+```
+
+
+### shoppers
+```
+id | name (varchar) | email (varchar) | nif (varchar)
+```
+
+
+###orders
+```
+id | merchant_id (integer -> FK) | shopper_id (integer -> FK) | amount (decimal) | created_at (timestamp) | completed_at (timestamp)
